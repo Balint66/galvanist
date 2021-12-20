@@ -10,23 +10,15 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapedRecipe;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 public class BatteryRecipe extends ShapedRecipe {
 
-    public BatteryRecipe(ResourceLocation pId, String pGroup) {
-        super(pId, pGroup, 3, 3,
-            NonNullList.of(null,
-                Ingredient.of(Tags.Items.INGOTS), Ingredient.EMPTY,
-                Ingredient.of(Tags.Items.INGOTS),
-                Ingredient.EMPTY, Ingredient.of(Items.BUCKET), Ingredient.EMPTY
-            ),
+    public BatteryRecipe(ResourceLocation pId, String pGroup, int pWidth, int pHeight, NonNullList<Ingredient> pingredients) {
+        super(pId, pGroup, pWidth, pHeight, pingredients,
             new ItemStack(com.blint.galvanist.Registries.Items.BATTERY.get(), 1));
     }
 
@@ -40,8 +32,8 @@ public class BatteryRecipe extends ShapedRecipe {
         String mapping[] = new String[2];
         int s = 0;
 
-        for (int i = 0; i < pInv.getHeight() && s < 2; i++) {
-            for (int j = 0; j < pInv.getWidth() && s < 2; j++) {
+        for (int i = 0; i < getHeight() && s < 2; i++) {
+            for (int j = 0; j < getWidth() && s < 2; j++) {
                 ItemStack ingredient = pInv.getItem(i+j);
                 if(ingredient.isEmpty()) continue;
                 if(!manager.contains(ingredient.getItem())) continue;
@@ -82,13 +74,13 @@ public class BatteryRecipe extends ShapedRecipe {
         @Override
         public BatteryRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
             ShapedRecipe rec =  RecipeSerializer.SHAPED_RECIPE.fromJson(pRecipeId, pSerializedRecipe);
-            return new BatteryRecipe(rec.getId(), rec.getGroup());
+            return new BatteryRecipe(rec.getId(), rec.getGroup(), rec.getWidth(), rec.getWidth(), rec.getIngredients());
         }
 
         @Override
         public BatteryRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
             ShapedRecipe rec =  RecipeSerializer.SHAPED_RECIPE.fromNetwork(pRecipeId, pBuffer);
-            return new BatteryRecipe(rec.getId(), rec.getGroup());
+            return new BatteryRecipe(rec.getId(), rec.getGroup(), rec.getWidth(), rec.getWidth(), rec.getIngredients());
         }
 
         @Override

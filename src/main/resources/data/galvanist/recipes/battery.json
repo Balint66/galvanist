@@ -3,6 +3,7 @@
     "group": "idk",
     "pattern":
     [
+      "   ",
       "I G",
       " B "
     ],
@@ -12,7 +13,7 @@
   
               {
   
-                "tag":"galvanist:electrodes"
+                "tag":"forge:ingots"
               }
   
   
@@ -22,7 +23,7 @@
   
               {
   
-                "tag":"galvanist:electrodes"
+                "tag":"forge:ingots"
               }
   
   
@@ -32,7 +33,7 @@
   
               {
   
-                "item":"galvanist:gbucket"
+                "item":"minecraft:bucket"
   
               }
   

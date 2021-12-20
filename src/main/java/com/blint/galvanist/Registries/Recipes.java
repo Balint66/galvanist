@@ -18,7 +18,8 @@ public final class Recipes {
     public static void Init()
     {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-        SERIALIZERS.register(bus);
+        //TODO: Figure out more about the recipe matching.
+        //SERIALIZERS.register(bus);
     }
 
     public static final RegistryObject<RecipeSerializer<?>> BATTERY_RECIPE = SERIALIZERS.register("battery_recipe", BatteryRecipe.Serializer::new );
