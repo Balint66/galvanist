@@ -1,0 +1,46 @@
+{
+    "type": "galvanist:battery_recipe",
+    "group": "idk",
+    "pattern":
+    [
+      "I G",
+      " B "
+    ],
+    "key":{
+        "I":
+            [
+  
+              {
+  
+                "tag":"galvanist:electrodes"
+              }
+  
+  
+            ],
+        "G":
+            [
+  
+              {
+  
+                "tag":"galvanist:electrodes"
+              }
+  
+  
+            ],
+        "B":
+            [
+  
+              {
+  
+                "item":"galvanist:gbucket"
+  
+              }
+  
+            ]
+    },
+    "result": {
+      "item": "galvanist:battery",
+      "count": 1
+    },
+    "_comment": "dummy recipe"
+  }
